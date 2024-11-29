@@ -12,13 +12,14 @@ type Props = {
     };
     website: string;
   };
+  isAdmin: boolean;
 };
 
 export const UserCard = (props: Props) => {
-  const { user } = props;
+  const { user, isAdmin } = props;
   return (
     <Card>
-      <UserIconWithName image={user.image} name={user.name} />
+      <UserIconWithName isAdmin={isAdmin} image={user.image} name={user.name} />
       <SDL>
         <dt>メール</dt>
         <dd>{user.name}</dd>
