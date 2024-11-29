@@ -42,6 +42,6 @@ const SDL = styled.dl`
   dd {
     padding-left: 32px;
     padding-botton: 8px;
-    overflow-wap: break-word;
+    overflow-wrap: break-word;
   }
 `;
