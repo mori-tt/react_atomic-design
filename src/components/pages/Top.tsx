@@ -2,21 +2,22 @@ import styled from "styled-components";
 import { DefaultLayout } from "../templates/DefaultLayout";
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../../providers/UserProvider";
+import { useAppDispatch } from "../../hooks/useRedux";
+import { setUserInfo } from "../../store/slices/userSlice";
 
 export const Top = () => {
   const navigate = useNavigate();
-  const { setUserInfo } = useContext(UserContext);
+  const dispatch = useAppDispatch();
 
   const onClickAdmin = () => {
-    setUserInfo({ isAdmin: true });
+    dispatch(setUserInfo({ isAdmin: true }));
     navigate("/users");
   };
   const onClickGeneral = () => {
-    setUserInfo({ isAdmin: false });
+    dispatch(setUserInfo({ isAdmin: false }));
     navigate("/users");
   };
+
   return (
     <DefaultLayout>
       <SContainer>

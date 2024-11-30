@@ -1,17 +1,15 @@
-import { memo, useContext } from "react";
+import { memo } from "react";
 import styled from "styled-components";
-import { UserContext } from "../../../providers/UserProvider";
 
 type Props = {
   src: string;
   name: string;
+  isAdmin: boolean;
 };
 
 export const UserIconWithName = memo((props: Props) => {
-  console.log("UserIconWithName");
-  const { src, name } = props;
-  const { userInfo } = useContext(UserContext);
-  const isAdmin = userInfo ? userInfo.isAdmin : false;
+  const { src, name, isAdmin } = props;
+
   return (
     <SContainer>
       <SImg height={160} width={160} alt={name} src={src} />

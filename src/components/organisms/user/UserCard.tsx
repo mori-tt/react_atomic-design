@@ -13,14 +13,14 @@ type Props = {
     };
     website: string;
   };
+  isAdmin: boolean;
 };
 
 export const UserCard = memo((props: Props) => {
-  console.log("UserCard");
-  const { user } = props;
+  const { user, isAdmin } = props;
   return (
     <Card>
-      <UserIconWithName src={user.image} name={user.name} />
+      <UserIconWithName src={user.image} name={user.name} isAdmin={isAdmin} />
       <SDL>
         <dt>メール</dt>
         <dd>{user.name}</dd>
