@@ -1,12 +1,19 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
-export const UserContext = createContext({});
+type UserContextType = {
+  userInfo: { isAdmin: boolean } | null;
+  setUserInfo: (userInfo: { isAdmin: boolean }) => void;
+};
+
+export const UserContext = createContext<UserContextType>(
+  {} as UserContextType
+);
 
 export const UserProvider = (props: { children: React.ReactNode }) => {
   const { children } = props;
-  const contextName = "morimoli";
+  const [userInfo, setUserInfo] = useState<{ isAdmin: boolean } | null>(null);
   return (
-    <UserContext.Provider value={{ contextName }}>
+    <UserContext.Provider value={{ userInfo, setUserInfo }}>
       {children}
     </UserContext.Provider>
   );

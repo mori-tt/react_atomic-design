@@ -3,18 +3,17 @@ import styled from "styled-components";
 import { UserContext } from "../../../providers/UserProvider";
 
 type Props = {
-  image: string;
+  src: string;
   name: string;
-  isAdmin?: boolean;
 };
 
 export const UserIconWithName = (props: Props) => {
-  const { image, name, isAdmin } = props;
-  const context = useContext(UserContext);
-  console.log(context);
+  const { src, name } = props;
+  const { userInfo } = useContext(UserContext);
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
   return (
     <SContainer>
-      <SImg height={160} width={160} alt={name} src={image} />
+      <SImg height={160} width={160} alt={name} src={src} />
       <SName>{name}</SName>
       {isAdmin && <SEdit>編集</SEdit>}
     </SContainer>
